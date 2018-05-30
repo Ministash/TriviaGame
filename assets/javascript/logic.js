@@ -1,4 +1,4 @@
-var timer = 20;
+var timer = 21;
 var backgroundTimer = 28;
 var backgroundInterval;
 var intervalId;
@@ -109,7 +109,7 @@ function questionOnePage(){
     
     $(".wrongAnswer").on("click", function(){
         $("#questionWrapper").html("")
-        $("#questionsDiv").html("That is the wrong answer! The correct is rabbies!")
+        $("#questionsDiv").html("That is the wrong answer! The correct answer is rabbies!")
         $("#contentWrapper").append(
             $("<div/>")
             .attr('id', 'loserGif')
@@ -143,5 +143,11 @@ function secondQuestionsFunction(){
         backgroundTimer = 28;
         $("#correctGif").remove();
         $("#loserGif").remove();
+        questionTwoPage();
     }
+}
+
+function questionTwoPage(){
+        timer = 21;
+        timerStart();
 }
