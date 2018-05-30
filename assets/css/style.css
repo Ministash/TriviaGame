@@ -4,6 +4,15 @@ body {
 
 }
 
+#readyGif{
+    background-image: url("../images/ready.gif");
+    margin: 0 auto;
+    margin-top: 10px;
+    margin-bottom: -200px;
+    height: 270px;
+    width: 480px;
+}
+
 #box{
     margin: 0 auto;
     width: 70%;
@@ -86,10 +95,10 @@ body {
 
   #questionOne:hover{
     background: rgba(43, 255, 0, 0.623);
-    border: solid 2px rgb(51, 19, 7);
+    border: solid 2px rgb(185, 148, 135);
   }
 
-  #rightGif{
+  #correctGif{
       background-image: url("../images/gif.gif");
       margin: 0 auto;
       margin-top: 20px;
@@ -98,8 +107,8 @@ body {
 
   }
 
-  #wrongGif{
-    background-image: url("../images/gif2.gif");
+  #loserGif{
+    background-image: url("../images/loser.gif");
     margin: 0 auto;
     margin-top: 20px;
     height: 240px;
