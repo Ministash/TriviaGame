@@ -4,9 +4,6 @@ body {
 
 }
 
-
-
-
 #box{
     margin: 0 auto;
     width: 70%;
@@ -45,7 +42,7 @@ body {
     color: rgb(0, 0, 0);
 }
 
-.x p {
+.x {
     -webkit-user-select: none;
     -moz-user-select: none;     
     -ms-user-select: none;      
@@ -67,4 +64,45 @@ body {
   #upperText{
       position: relative;
       top: 100px;
+  }
+  
+  #questionWrapper{
+      margin: 0 auto;
+      margin-top: 20px;
+      width: 300px;
+      height: 300px;
+     
+  }
+
+  #questionOne{
+    margin: 0 auto;
+    margin-top: 20px;
+    width: 300px;
+    height: 50px;
+    background: rgba(255, 115, 0, 0.623);
+    border: solid 2px rgb(104, 39, 14);
+
+  }
+
+  #questionOne:hover{
+    background: rgba(43, 255, 0, 0.623);
+    border: solid 2px rgb(51, 19, 7);
+  }
+
+  #rightGif{
+      background-image: url("../images/gif.gif");
+      margin: 0 auto;
+      margin-top: 20px;
+      height: 200px;
+      width: 500px;
+
+  }
+
+  #wrongGif{
+    background-image: url("../images/gif2.gif");
+    margin: 0 auto;
+    margin-top: 20px;
+    height: 240px;
+    width: 320px;
+
   }
