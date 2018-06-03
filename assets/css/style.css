@@ -99,21 +99,55 @@ body {
     border: solid 2px rgb(185, 148, 135);
   }
 
-  #correctGif{
+  #correctGif1{
       background-image: url("../images/gif.gif");
       margin: 0 auto;
       margin-top: 20px;
       height: 200px;
       width: 500px;
-
   }
 
-  #loserGif{
+  #correctGif2{
+    background-image: url("../images/gif2.gif");
+    margin: 0 auto;
+    margin-top: 20px;
+    height: 270px;
+    width: 480px;
+  }
+
+  #correctGif3{
+    background-image: url("../images/gif3.gif");
+    margin: 0 auto;
+    margin-top: 20px;
+    height: 281px;
+    width: 500px;
+  }
+  
+
+  #wrongGif1{
     background-image: url("../images/loser.gif");
     margin: 0 auto;
     margin-top: 20px;
     height: 240px;
     width: 320px;
+
+  }
+
+  #wrongGif2{
+    background-image: url("../images/loser2.gif");
+    margin: 0 auto;
+    margin-top: 20px;
+    height: 276px;
+    width: 270px;
+
+  }
+
+  #wrongGif3{
+    background-image: url("../images/loser3.gif");
+    margin: 0 auto;
+    margin-top: 20px;
+    height: 270px;
+    width: 480px;
 
   }
 

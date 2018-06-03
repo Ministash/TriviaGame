@@ -1,4 +1,3 @@
-var startRedo = $("#startButton")
 const options1 = ["Lyme disease", "Malaria", "Rabies", "Ebola"];
 const options2 = ["Mesothelioma", "Leukemia", "Colorectal", "Melanoma"];
 const options3 = ["Emphysema", "Asthma", "Crohn's", "Pneumonia"];
@@ -6,7 +5,8 @@ const options4 = ["West Nile", "Yellow Fever", "Dengue", "Malaria"];
 const options5 = ["Dragon Worm", "Elephantiasis", "Dracunculus", "Wolbachia"];
 const options6 = ["Zinc", "Vitamin C", "Honey", "Vitamin A"];
 const options7 = ["Coughing", "Wheezing", "Sniffling", "Sneezing"];
-const correctGifs = ["correctGif1", "correctGif2", "correctGif3"];
+const correctGif = ["correctGif1", "correctGif2", "correctGif3"];
+const wrongGif = ["wrongGif1", "wrongGif2", "wrongGif3"];
 var optionChanger = "";
 var answer = "";
 var pageCounter = 0;
@@ -17,6 +17,23 @@ var backgroundInterval;
 var intervalId;
 var timer = 21;
 var backgroundTimer = 28;
+var randomCorrectGif = correctGifSelector();
+var randomWrongGif = wrongGifSelector();
+
+function correctGifSelector() {
+    thing = correctGif[Math.floor(Math.random() * correctGif.length)];
+    return thing;
+}
+console.log(randomCorrectGif);
+
+function wrongGifSelector() {
+    thing2 = wrongGif[Math.floor(Math.random() * wrongGif.length)];
+    return thing2;
+}
+
+console.log(randomWrongGif);
+
+
 
 
 gameStart();
@@ -62,23 +79,24 @@ function decrease() {
         $("#questionWrapper").html("")
         $("#contentWrapper").append(
             $("<div/>")
-                .attr('id', 'loserGif')
+                .attr('id', wrongGif[0])
         );
-        
+
     }
 }
 
 
+
 function buttons() {
 
-        $(".correct").on("click", function () {
+    $(".correct").on("click", function () {
         correctAnswers++;
         console.log("This is the amount of correct answers", correctAnswers);
         $("#questionWrapper").html("")
         $("#questionsDiv").html("That is the correct answer! Congratulations!")
         $("#contentWrapper").append(
             $("<div/>")
-                .attr('id', 'correctGif') 
+                .attr('id', randomCorrectGif)
         )
 
 
@@ -97,8 +115,8 @@ function buttons() {
         $("#questionWrapper").html("")
         $("#questionsDiv").html("That is the wrong answer! The correct answer is " + answer + "!")
         $("#contentWrapper").append(
-            $("<div/>") 
-                .attr('id', 'loserGif')
+            $("<div/>")
+                .attr('id',  randomWrongGif)
 
         )
 
@@ -131,43 +149,46 @@ function backgroundTimerReset() {
 
     if (backgroundTimer === 0) {
         pageCounter++;
-        console.log("this is the page counter", pageCounter);
+        // console.log("this is the page counter", pageCounter);
         backgroundTimer = 28;
-        $("#correctGif").remove();
-        $("#loserGif").remove();
+        $("#correctGif1, #correctGif2, #correctGif3").remove();
+        $("#wrongGif1, #wrongGif2, #wrongGif3").remove();
         pageDecider();
+        randomCorrectGif = correctGifSelector();
+        randomWrongGif = wrongGifSelector();
+        console.log(randomWrongGif);
     }
 }
 
-function pageDecider(){
-    if (pageCounter === 0){
+function pageDecider() {
+    if (pageCounter === 0) {
         questionOnePage();
     }
-    if (pageCounter === 1){
+    if (pageCounter === 1) {
         questionTwoPage();
     }
-    if(pageCounter === 2){
+    if (pageCounter === 2) {
         questionThreePage();
     }
-    if(pageCounter === 3){
+    if (pageCounter === 3) {
         questionFourPage();
     }
-    if(pageCounter === 4){
+    if (pageCounter === 4) {
         questionFivePage();
     }
-    if(pageCounter === 5){
+    if (pageCounter === 5) {
         questionSixPage();
     }
-    if(pageCounter === 6){
+    if (pageCounter === 6) {
         questionSevenPage();
     }
-    if(pageCounter === 7){
+    if (pageCounter === 7) {
         statsPage();
     }
 
 }
 
-function optionChangerFunction(optionChanger){
+function optionChangerFunction(optionChanger) {
     for (i = 0; i < optionChanger.length; i++) {
         if (optionChanger[i] === answer) {
             $("#questionWrapper").append(
@@ -175,7 +196,7 @@ function optionChangerFunction(optionChanger){
                     .attr('id', 'questionOne')
                     .addClass('correct x')
                     .text(optionChanger[i])
-                   
+
             );
         }
         else {
@@ -192,9 +213,9 @@ function optionChangerFunction(optionChanger){
 
 function questionOnePage() {
     answer = "Rabies";
-    
+
     optionChangerFunction(options1);
-    
+
 
     $("#contentWrapper").append(
         $("<div/>")
@@ -214,7 +235,7 @@ function questionTwoPage() {
     timer = 21;
     answer = "Mesothelioma";
     timerStart();
-    
+
     optionChangerFunction(options2);
 
     buttons();
@@ -227,7 +248,7 @@ function questionThreePage() {
     timer = 21;
     answer = "Crohn's";
     timerStart();
-    
+
     optionChangerFunction(options3);
 
     buttons();
@@ -239,7 +260,7 @@ function questionFourPage() {
     timer = 21;
     answer = "Malaria";
     timerStart();
-    
+
     optionChangerFunction(options4);
 
     buttons();
@@ -251,95 +272,95 @@ function questionFivePage() {
     timer = 21;
     answer = "Elephantiasis";
     timerStart();
-    
+
     optionChangerFunction(options5);
 
     buttons();
 
 }
 
-function questionSixPage(){
+function questionSixPage() {
     $("#questionsDiv").html("Which of the following is thought to be most effective in helping to reduce both the symptoms and duration of the common cold?");
     timer = 21;
     answer = "Zinc";
     timerStart();
-    
+
     optionChangerFunction(options6);
 
     buttons();
 }
 
-function questionSevenPage(){
+function questionSevenPage() {
     $("#questionsDiv").html("What is 'sternutation' the official name for?");
     timer = 21;
     answer = "Sneezing";
     timerStart();
-    
+
     optionChangerFunction(options7);
 
     buttons();
 }
 
-function statsPage(){
-     
-    if(7 <= correctAnswers)
-    $("#questionsDiv").html("The game is over! Congratulations on the perfect score!");
-    else if(correctAnswers > 4){
-    $("#questionsDiv").html("The game is over! Wow, You did great! Click the button to play again!");
-    } else{
-        $("#questionsDiv").html("The game is over! Congratulations on doing so poorly! You might want to play again.");   
+function statsPage() {
+
+    if (7 <= correctAnswers)
+        $("#questionsDiv").html("The game is over! Congratulations on the perfect score!");
+    else if (correctAnswers > 4) {
+        $("#questionsDiv").html("The game is over! Wow, You did great! Click the button to play again!");
+    } else {
+        $("#questionsDiv").html("The game is over! Congratulations on doing so poorly! You might want to play again.");
     }
 
     $("#questionWrapper").remove();
-    
-    
+
+
     $("#box").append(
         $("<div/>").attr('id', 'stats'));
 
-        $('#stats').append(
+    $('#stats').append(
 
-            $("<div/>")
+        $("<div/>")
             .addClass('b')
             .html("Your score:"),
 
-            $("<div/>")
+        $("<div/>")
             .addClass('b')
             .html("Wins: " + correctAnswers),
-           
-            $("<div/>")
+
+        $("<div/>")
             .addClass('b')
             .html("Loses: " + wrongAnswers),
 
-            $("<div/>")
+        $("<div/>")
             .addClass('b')
             .html("Unanswered: " + unanswered)
 
-        );
+    );
 
-        $("#box").append( 
-            $("<div/>")
+    $("#box").append(
+        $("<div/>")
             .attr('id', 'startButton')
             .addClass('x')
 
-        );
-        
-        $("#startButton").append(
-            $("<p/>").text("Start")
-        );
- 
-        function startButtonReset(){
-            $("#startButton").on("click", function(){
-                reset();
+    );
 
-            });
-        
-        }
-        startButtonReset();
-    
-    
+    $("#startButton").append(
+        $("<p/>").text("Start")
+    );
+
+    function startButtonReset() {
+        $("#startButton").on("click", function () {
+            reset();
+
+        });
+
+    }
+    startButtonReset();
+
+
 }
 
-function reset(){
+function reset() {
     timer = 21;
     backgroundTimer = 28;
     $("#timerDiv").html("Time Remaining: " + timer + " Seconds");
@@ -348,7 +369,7 @@ function reset(){
     $("#questionsDiv").remove();
     $("#box").append(
         $("<div/>")
-        .attr('id', 'questionWrapper')
+            .attr('id', 'questionWrapper')
     );
     questionOnePage();
     timerStart();
@@ -356,8 +377,8 @@ function reset(){
     correctAnswers = 0;
     wrongAnswers = 0;
     unanswered = 0;
-    
-   
+
+
 }
 
 
