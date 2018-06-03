@@ -102,7 +102,7 @@ function buttons() {
 
         if (timer > -1) {
             clearInterval(intervalId);
-            backgroundTimer = 7;
+            backgroundTimer = 5;
             timer = 0;
             $("#timerDiv").html("Time Remaining: " + timer + " Seconds");
         };
@@ -124,7 +124,7 @@ function buttons() {
 
         if (timer > -1) {
             clearInterval(intervalId);
-            backgroundTimer = 7;
+            backgroundTimer = 6;
             timer = 0;
             $("#timerDiv").html("Time Remaining: " + timer + " Seconds");
         }
