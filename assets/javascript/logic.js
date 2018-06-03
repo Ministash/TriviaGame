@@ -36,7 +36,6 @@ function gameStart() {
 
         );
         backgroundFunction();
-        // questionOnePage();
         timerStart();
         pageDecider();
     });
@@ -282,8 +281,10 @@ function questionSevenPage(){
 }
 
 function statsPage(){
-
-    if(correctAnswers > 4){
+     
+    if(7 <= correctAnswers)
+    $("#questionsDiv").html("The game is over! Congratulations on the perfect score!");
+    else if(correctAnswers > 4){
     $("#questionsDiv").html("The game is over! Wow, You did great! Click the button to play again!");
     } else{
         $("#questionsDiv").html("The game is over! Congratulations on doing so poorly! You might want to play again.");   
