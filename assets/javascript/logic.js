@@ -24,14 +24,14 @@ function correctGifSelector() {
     thing = correctGif[Math.floor(Math.random() * correctGif.length)];
     return thing;
 }
-console.log(randomCorrectGif);
+// console.log(randomCorrectGif);
 
 function wrongGifSelector() {
     thing2 = wrongGif[Math.floor(Math.random() * wrongGif.length)];
     return thing2;
 }
 
-console.log(randomWrongGif);
+// console.log(randomWrongGif);
 
 
 
@@ -73,7 +73,7 @@ function decrease() {
 
     if (timer === 0) {
         unanswered++;
-        console.log("This is the amount of unanswered problems", unanswered);
+        // console.log("This is the amount of unanswered problems", unanswered);
         clearInterval(intervalId);
         $("#questionsDiv").html("You waited too long! The correct answer is " + answer + "!")
         $("#questionWrapper").html("")
@@ -91,7 +91,7 @@ function buttons() {
 
     $(".correct").on("click", function () {
         correctAnswers++;
-        console.log("This is the amount of correct answers", correctAnswers);
+        // console.log("This is the amount of correct answers", correctAnswers);
         $("#questionWrapper").html("")
         $("#questionsDiv").html("That is the correct answer! Congratulations!")
         $("#contentWrapper").append(
@@ -111,7 +111,7 @@ function buttons() {
 
     $(".wrongAnswer").on("click", function () {
         wrongAnswers++;
-        console.log("This is the amount of wrong answers", wrongAnswers);
+        // console.log("This is the amount of wrong answers", wrongAnswers);
         $("#questionWrapper").html("")
         $("#questionsDiv").html("That is the wrong answer! The correct answer is " + answer + "!")
         $("#contentWrapper").append(
@@ -145,7 +145,7 @@ function backgroundFunction() {
 
 function backgroundTimerReset() {
     backgroundTimer--;
-    console.log(backgroundTimer);
+    // console.log(backgroundTimer);
 
     if (backgroundTimer === 0) {
         pageCounter++;
@@ -156,7 +156,7 @@ function backgroundTimerReset() {
         pageDecider();
         randomCorrectGif = correctGifSelector();
         randomWrongGif = wrongGifSelector();
-        console.log(randomWrongGif);
+        // console.log(randomWrongGif);
     }
 }
 
@@ -305,7 +305,7 @@ function statsPage() {
 
     if (7 <= correctAnswers)
         $("#questionsDiv").html("The game is over! Congratulations on the perfect score!");
-    else if (correctAnswers > 4) {
+    else if (correctAnswers > 3) {
         $("#questionsDiv").html("The game is over! Wow, You did great! Click the button to play again!");
     } else {
         $("#questionsDiv").html("The game is over! Congratulations on doing so poorly! You might want to play again.");
