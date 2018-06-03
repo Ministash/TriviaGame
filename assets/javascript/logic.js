@@ -1,20 +1,27 @@
-// var startRedo = $("#startButton")
-var backgroundInterval;
-var intervalId;
-var timer = 21;
-var backgroundTimer = 28;
-var options1 = ["Lyme disease", "Malaria", "Rabbies", "Ebola"];
-var options2 = ["Mesothelioma", "Leukemia", "Colorectal", "Melanoma"];
-var options3 = ["Emphysema", "Asthma", "Crohn's", "Pneumonia"];
-var options4 = ["West Nile", "Yellow Fever", "Dengue", "Malaria"];
-var options5 = ["Dragon Worm", "Elephantiasis", "Dracunculus", "Wolbachia"];
+var startRedo = $("#startButton")
+const options1 = ["Lyme disease", "Malaria", "Rabies", "Ebola"];
+const options2 = ["Mesothelioma", "Leukemia", "Colorectal", "Melanoma"];
+const options3 = ["Emphysema", "Asthma", "Crohn's", "Pneumonia"];
+const options4 = ["West Nile", "Yellow Fever", "Dengue", "Malaria"];
+const options5 = ["Dragon Worm", "Elephantiasis", "Dracunculus", "Wolbachia"];
+const options6 = ["Zinc", "Vitamin C", "Honey", "Vitamin A"];
+const options7 = ["Coughing", "Wheezing", "Sniffling", "Sneezing"];
+const correctGifs = ["correctGif1", "correctGif2", "correctGif3"];
+var optionChanger = "";
 var answer = "";
 var pageCounter = 0;
 var correctAnswers = 0;
 var wrongAnswers = 0;
 var unanswered = 0;
+var backgroundInterval;
+var intervalId;
+var timer = 21;
+var backgroundTimer = 28;
+
 
 gameStart();
+
+
 
 function gameStart() {
     $("#startButton").on("click", function () {
@@ -29,9 +36,10 @@ function gameStart() {
 
         );
         backgroundFunction();
-        questionOnePage();
+        // questionOnePage();
         timerStart();
-    })
+        pageDecider();
+    });
 }
 
 
@@ -77,7 +85,7 @@ function buttons() {
 
         if (timer > -1) {
             clearInterval(intervalId);
-            backgroundTimer = 6;
+            backgroundTimer = 4;
             timer = 0;
             $("#timerDiv").html("Time Remaining: " + timer + " Seconds");
         };
@@ -90,7 +98,7 @@ function buttons() {
         $("#questionWrapper").html("")
         $("#questionsDiv").html("That is the wrong answer! The correct answer is " + answer + "!")
         $("#contentWrapper").append(
-            $("<div/>")
+            $("<div/>") 
                 .attr('id', 'loserGif')
 
         )
@@ -99,7 +107,7 @@ function buttons() {
 
         if (timer > -1) {
             clearInterval(intervalId);
-            backgroundTimer = 12;
+            backgroundTimer = 6;
             timer = 0;
             $("#timerDiv").html("Time Remaining: " + timer + " Seconds");
         }
@@ -124,6 +132,7 @@ function backgroundTimerReset() {
 
     if (backgroundTimer === 0) {
         pageCounter++;
+        console.log("this is the page counter", pageCounter);
         backgroundTimer = 28;
         $("#correctGif").remove();
         $("#loserGif").remove();
@@ -150,11 +159,43 @@ function pageDecider(){
     if(pageCounter === 5){
         questionSixPage();
     }
+    if(pageCounter === 6){
+        questionSevenPage();
+    }
+    if(pageCounter === 7){
+        statsPage();
+    }
 
 }
 
+function optionChangerFunction(optionChanger){
+    for (i = 0; i < optionChanger.length; i++) {
+        if (optionChanger[i] === answer) {
+            $("#questionWrapper").append(
+                $("<div/>")
+                    .attr('id', 'questionOne')
+                    .addClass('correct x')
+                    .text(optionChanger[i])
+                   
+            );
+        }
+        else {
+            $("#questionWrapper").append(
+                $("<div/>")
+                    .attr('id', 'questionOne')
+                    .addClass('wrongAnswer x')
+                    .text(optionChanger[i])
+            );
+        }
+
+    }
+}
+
 function questionOnePage() {
-    answer = "Rabbies";
+    answer = "Rabies";
+    
+    optionChangerFunction(options1);
+    
 
     $("#contentWrapper").append(
         $("<div/>")
@@ -163,24 +204,7 @@ function questionOnePage() {
     );
 
 
-    for (i = 0; i < options1.length; i++) {
-        if (options1[i] === answer) {
-            $("#questionWrapper").append(
-                $("<div/>")
-                    .attr('id', 'questionOne')
-                    .addClass('correct x')
-                    .text(options1[i])
-            );
-        }
-        else {
-            $("#questionWrapper").append(
-                $("<div/>")
-                    .attr('id', 'questionOne')
-                    .addClass('wrongAnswer x')
-                    .text(options1[i])
-            );
-        }
-    }
+
     buttons();
 
 }
@@ -192,27 +216,7 @@ function questionTwoPage() {
     answer = "Mesothelioma";
     timerStart();
     
-
-    for (i = 0; i < options1.length; i++) {
-        if (options2[i] === answer) {
-            $("#questionWrapper").append(
-                $("<div/>")
-                    .attr('id', 'questionOne')
-                    .addClass('correct x')
-                    .text(options2[i])
-                   
-            );
-        }
-        else {
-            $("#questionWrapper").append(
-                $("<div/>")
-                    .attr('id', 'questionOne')
-                    .addClass('wrongAnswer x')
-                    .text(options2[i])
-            );
-        }
-
-    }
+    optionChangerFunction(options2);
 
     buttons();
 
@@ -220,101 +224,140 @@ function questionTwoPage() {
 
 
 function questionThreePage() {
-    $("#questionsDiv").html("A chronic inflammatory bowel disease that affects the lining of the digestive tract.")
+    $("#questionsDiv").html("A chronic inflammatory bowel disease that affects the lining of the digestive tract.");
     timer = 21;
     answer = "Crohn's";
     timerStart();
     
-
-    for (i = 0; i < options1.length; i++) {
-        if (options3[i] === answer) {
-            $("#questionWrapper").append(
-                $("<div/>")
-                    .attr('id', 'questionOne')
-                    .addClass('correct x')
-                    .text(options3[i])
-                   
-            );
-        }
-        else {
-            $("#questionWrapper").append(
-                $("<div/>")
-                    .attr('id', 'questionOne')
-                    .addClass('wrongAnswer x')
-                    .text(options3[i])
-            );
-        }
-
-    }
+    optionChangerFunction(options3);
 
     buttons();
 
 }
 
 function questionFourPage() {
-    $("#questionsDiv").html("Kills more people than any other disease in the world.")
+    $("#questionsDiv").html("Kills more people than any other disease in the world.");
     timer = 21;
     answer = "Malaria";
     timerStart();
     
-
-    for (i = 0; i < options1.length; i++) {
-        if (options4[i] === answer) {
-            $("#questionWrapper").append(
-                $("<div/>")
-                    .attr('id', 'questionOne')
-                    .addClass('correct x')
-                    .text(options4[i])
-                   
-            );
-        }
-        else {
-            $("#questionWrapper").append(
-                $("<div/>")
-                    .attr('id', 'questionOne')
-                    .addClass('wrongAnswer x')
-                    .text(options4[i])
-            );
-        }
-
-    }
+    optionChangerFunction(options4);
 
     buttons();
 
 }
 
 function questionFivePage() {
-    $("#questionsDiv").html("A tropical, parasitic disease that affects the lymph nodes and lymph vessels.")
+    $("#questionsDiv").html("A tropical, parasitic disease that affects the lymph nodes and lymph vessels.");
     timer = 21;
     answer = "Elephantiasis";
     timerStart();
     
-
-    for (i = 0; i < options1.length; i++) {
-        if (options5[i] === answer) {
-            $("#questionWrapper").append(
-                $("<div/>")
-                    .attr('id', 'questionOne')
-                    .addClass('correct x')
-                    .text(options5[i])
-                   
-            );
-        }
-        else {
-            $("#questionWrapper").append(
-                $("<div/>")
-                    .attr('id', 'questionOne')
-                    .addClass('wrongAnswer x')
-                    .text(options5[i])
-            );
-        }
-
-    }
+    optionChangerFunction(options5);
 
     buttons();
 
 }
 
+function questionSixPage(){
+    $("#questionsDiv").html("Which of the following is thought to be most effective in helping to reduce both the symptoms and duration of the common cold?");
+    timer = 21;
+    answer = "Zinc";
+    timerStart();
+    
+    optionChangerFunction(options6);
+
+    buttons();
+}
+
+function questionSevenPage(){
+    $("#questionsDiv").html("What is 'sternutation' the official name for?");
+    timer = 21;
+    answer = "Sneezing";
+    timerStart();
+    
+    optionChangerFunction(options7);
+
+    buttons();
+}
+
+function statsPage(){
+
+    if(correctAnswers > 4){
+    $("#questionsDiv").html("The game is over! Wow, You did great! Click the button to play again!");
+    } else{
+        $("#questionsDiv").html("The game is over! Congratulations on doing so poorly! You might want to play again.");   
+    }
+
+    $("#questionWrapper").remove();
+    
+    
+    $("#box").append(
+        $("<div/>").attr('id', 'stats'));
+
+        $('#stats').append(
+
+            $("<div/>")
+            .addClass('b')
+            .html("Your score:"),
+
+            $("<div/>")
+            .addClass('b')
+            .html("Wins: " + correctAnswers),
+           
+            $("<div/>")
+            .addClass('b')
+            .html("Loses: " + wrongAnswers),
+
+            $("<div/>")
+            .addClass('b')
+            .html("Unanswered: " + unanswered)
+
+        );
+
+        $("#box").append( 
+            $("<div/>")
+            .attr('id', 'startButton')
+            .addClass('x')
+
+        );
+        
+        $("#startButton").append(
+            $("<p/>").text("Start")
+        );
+ 
+        function startButtonReset(){
+            $("#startButton").on("click", function(){
+                reset();
+
+            });
+        
+        }
+        startButtonReset();
+    
+    
+}
+
+function reset(){
+    timer = 21;
+    backgroundTimer = 28;
+    $("#timerDiv").html("Time Remaining: " + timer + " Seconds");
+    $("#stats").remove();
+    $("#startButton").remove();
+    $("#questionsDiv").remove();
+    $("#box").append(
+        $("<div/>")
+        .attr('id', 'questionWrapper')
+    );
+    questionOnePage();
+    timerStart();
+    pageCounter = 0;
+    correctAnswers = 0;
+    wrongAnswers = 0;
+    unanswered = 0;
+    
+   
+}
 
 
 

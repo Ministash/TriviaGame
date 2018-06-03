@@ -1,6 +1,6 @@
 body {
     background-image: url("../images/dust.jpg");
-    background-size: 30%;
+    background-size: 100%;
 
 }
 
@@ -8,7 +8,7 @@ body {
     background-image: url("../images/ready.gif");
     margin: 0 auto;
     margin-top: 10px;
-    margin-bottom: -200px;
+    margin-bottom: 20px;
     height: 270px;
     width: 480px;
 }
@@ -17,7 +17,7 @@ body {
     margin: 0 auto;
     width: 70%;
     height: 700px;
-    background: rgba(255, 255, 255, 0.76);
+    background: rgba(255, 255, 255, 0.63);
     text-align: center;
     font-size: 40px;
     font-weight: bolder;
@@ -28,7 +28,8 @@ body {
 #triviaHeader{
     height: 100px;
     line-height: 100px;
-    border-bottom: 2px solid rgba(0, 0, 0, 0.226);
+    border-bottom: 2px solid rgba(0, 0, 0, 0.596);
+    background: rgba(255, 255, 255, 0.589);
     
 
 }
@@ -36,19 +37,19 @@ body {
 #startButton{
     width: 500px;
     height: 100px;
-    background: #2dd7f5;
-    border: solid rgb(129, 133, 134) 2px;
+    background: #f52d2d;
+    border: solid #818586 2px;
     margin: 0 auto;
-    margin-top: 20%;
+    margin-top: 20px;
     line-height: 20px;
     transition: all 0.2s;
-    color: rgb(43, 43, 43);
+    color: rgb(255, 255, 255);
 }
 
 #startButton:hover{
-    background: #88e6f7;
+    background: #f3abab;
     border: solid 2px rgb(255, 255, 255);
-    color: rgb(0, 0, 0);
+    color: #00323f;
 }
 
 .x {
@@ -114,4 +115,19 @@ body {
     height: 240px;
     width: 320px;
 
+  }
+
+  #stats{
+      margin: 0 auto;
+      width: 600px;
+      height: 250px;
+      margin-top: 25px;
+      border: 2px solid rgb(28, 91, 173);
+      background: rgba(95, 95, 95, 0.384);
+      
+
+  }
+
+  .b{
+      margin-top: 10px;
   }
